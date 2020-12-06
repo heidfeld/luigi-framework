@@ -5,14 +5,18 @@ import {getReadableValue} from '../../helpers/componentHelpers';
 
 const TableRow = (props) => {
 
-    const {isHeader, headers, row} = props;
+    const {isHeader, headers, row, rowIndex} = props;
 
     const renderCells = () => {
         return headers.map((header) => {
             const {id} = header;
             const value = getReadableValue(row[id]);
             return (
-                <TableCell value={value} isHeader={isHeader}/>
+                <TableCell
+                    key={`row_${rowIndex}_${id}`}
+                    value={value}
+                    isHeader={isHeader}
+                />
             );
         });
     };
@@ -38,9 +42,10 @@ TableRow.propTypes = {
         })
     ).isRequired,
     row: PropTypes.shape({
-        value: PropTypes.oneOfType(PropTypes.string, PropTypes.number),
+        value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
         readableValue: PropTypes.string
-    }).isRequired
+    }).isRequired,
+    rowIndex: PropTypes.number
 };
 
 export default TableRow;

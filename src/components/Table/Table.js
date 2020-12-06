@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import TableRow from './TableRow';
 import { toSimpleDataDTO } from '../../helpers/componentHelpers';
 
+import './css/Table.css';
+
 const Table = (props) => {
 
     const {data} = props;
@@ -27,9 +29,15 @@ const Table = (props) => {
     };
 
     const renderRows = (rows) => {
-        const allRows = rows.map((row) => {
+        const allRows = rows.map((row, idx) => {
             return (
-                <TableRow isHeader={false} headers={headers} row={row}/>
+                <TableRow
+                    key={`row_${idx}`}
+                    isHeader={false}
+                    headers={headers}
+                    row={row}
+                    rowIndex={idx}
+                />
             );
         });
         return (
@@ -58,7 +66,7 @@ Table.propTypes = {
         ),
         rows: PropTypes.arrayOf(
             PropTypes.shape({
-                value: PropTypes.oneOfType(PropTypes.string, PropTypes.number),
+                value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
                 readableValue: PropTypes.string
             })
         )

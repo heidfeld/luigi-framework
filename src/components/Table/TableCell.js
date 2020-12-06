@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './css/Table.css';
+
 const TableCell = (props) => {
 
     const {value, isHeader} = props;
@@ -8,13 +10,13 @@ const TableCell = (props) => {
     const renderCell = () => {
         if (isHeader) {
             return (
-                <th>
+                <th className="table__cell--header">
                     {value}
                 </th>
             );
         }
         return (
-            <td>
+            <td className="table__cell">
                 {value}
             </td>
         );
