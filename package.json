@@ -1,6 +1,6 @@
 {
   "name": "@heidfeld/luigi-framework",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": false,
   "repository": {
     "type": "git",
@@ -42,7 +42,7 @@
   "scripts": {
     "build-prod": "webpack --config=webpack.config.prod.js",
     "build-dev": "webpack --config=webpack.config.dev.js",
-    "dev": "webpack-serve --port 3000 --config webpack.config.dev.js"
+    "dev": "webpack-serve --port 3001 --config webpack.config.dev.js"
   },
   "eslintConfig": {
     "extends": [
